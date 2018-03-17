@@ -25,25 +25,25 @@ pipeline {
                 }
         stage('Run Tests') {
             parallel {
-                stage('Test On Windows') {
+                stage('security test') {
                   agent none
                     steps {
-                        echo "test windows"
+                        echo "test security"
                     }
                     post {
                         always {
-                            echo "test windows result"
+                            echo "test security result"
                         }
                     }
                 }
-                stage('Test On Linux') {
+                stage('performance test') {
                    agent none
                     steps {
-                          echo "test Linux"
+                          echo "test performance"
                     }
                     post {
                         always {
-                           echo "test linux result"
+                           echo "test performance result"
                         }
                     }
                 }
