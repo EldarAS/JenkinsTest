@@ -41,8 +41,7 @@ pipeline {
        stage('deploy to dev') {
                    agent none
                     steps {
-
-                        echo "deploy to dev"
+                      bat "aws s3 ls"
                     }
                     post {
                         always {
