@@ -14,6 +14,17 @@ pipeline {
                         }
                     }
                 }
+                  stage('Unint test') {
+                   agent none
+                    steps {
+                        echo "Unit test"
+                    }
+                    post {
+                        always {
+                            echo "Unit test result"
+                        }
+                    }
+                }
   stage('sonarqube') {
                    agent none
                     steps {
