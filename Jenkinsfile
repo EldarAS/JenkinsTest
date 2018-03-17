@@ -65,6 +65,7 @@ pipeline {
                     }
                 }
   }
+ }
         stage('Run Tests dev') {
             parallel {
                 stage('deployment test') {
