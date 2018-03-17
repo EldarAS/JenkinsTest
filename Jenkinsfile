@@ -38,8 +38,9 @@ pipeline {
                         }
                     }
                 }
- parallel {
-  stage('deploy to dev') {
+   stage('deploy to dev') {
+     parallel {
+
    stage('Security test cloudformation scripts') {
                    agent none
                     steps {
