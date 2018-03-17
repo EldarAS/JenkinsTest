@@ -77,6 +77,7 @@ pipeline {
         } catch (error) {
            echo "full stop"
         }
+ }
 
        stage('deploy to SIT') {
                    agent none
