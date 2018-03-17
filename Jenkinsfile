@@ -4,7 +4,7 @@ pipeline {
          stage('Build and check code') {
             parallel {
   stage('build') {
-                   agent none
+              agent none
                     steps {
                         echo "build"
                     }
@@ -49,14 +49,15 @@ pipeline {
                         }
                     }
                 }
+
    stage('deploy to dev') {
      parallel {
 
    stage('Security test cloudformation scripts') {
                    agent none
                     steps {
+  
                       echo "CFN_NAG run"
-                     // bat "aws s3 ls"
                     }
                     post {
                         always {
@@ -67,8 +68,9 @@ pipeline {
        stage('deploy dev') {
                    agent none
                     steps {
-                      echo "deploy to dev"
-                     // bat "aws s3 ls"
+                    node{
+ bat cmd "aws s3 ls"
+}
                     }
                     post {
                         always {
