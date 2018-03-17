@@ -23,6 +23,17 @@ pipeline {
                         }
                     }
                 }
+ stage('Add to nexus artifact repo') {
+                   agent none
+                    steps {
+                        echo "Add to nexus artifact repo"
+                    }
+                    post {
+                        always {
+                            echo "Add to nexus artifact repo OK"
+                        }
+                    }
+                }
        stage('deploy to dev') {
                    agent none
                     steps {
