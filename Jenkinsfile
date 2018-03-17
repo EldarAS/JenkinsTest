@@ -28,7 +28,7 @@ agent any
          echo 'archive artifact here...'
         }
       }
-    }
+    
 
     stage('Quality Analysis') {
       parallel {
@@ -67,7 +67,7 @@ agent any
       }
     }
   }
-
+}
   post {
     failure {
       // notify users when the Pipeline fails
@@ -76,4 +76,3 @@ agent any
           body: "Something is wrong with ${env.BUILD_URL}"
     }
   }
-}
