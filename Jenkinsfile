@@ -4,9 +4,7 @@ pipeline {
         stage('Run Tests') {
             parallel {
                 stage('Test On Windows') {
-                    agent {
-                        label "windows"
-                    }
+                  agent none
                     steps {
                         bat "run-tests.bat"
                     }
@@ -17,11 +15,9 @@ pipeline {
                     }
                 }
                 stage('Test On Linux') {
-                    agent {
-                        label "linux"
-                    }
+                   agent none
                     steps {
-                        sh "run-tests.sh"
+                        bat "run-tests.bat"
                     }
                     post {
                         always {
