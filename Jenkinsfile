@@ -68,7 +68,7 @@ pipeline {
        stage('deploy dev') {
                    agent any
                     steps {
-                     bat  'aws s3 ls'
+                      powershell 'aws s3 ls'
                     }
                     post {
                         always {
