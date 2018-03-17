@@ -1,27 +1,49 @@
 pipeline {
     agent none
     stages {
+  stage('build') {
+                   agent none
+                    steps {
+                        echo "build"
+                    }
+                    post {
+                        always {
+                            echo "build result"
+                        }
+                    }
+                }
+  stage('sonarqube') {
+                   agent none
+                    steps {
+                        echo "sonarqube"
+                    }
+                    post {
+                        always {
+                            echo "sonar qube result"
+                        }
+                    }
+                }
         stage('Run Tests') {
             parallel {
                 stage('Test On Windows') {
                   agent none
                     steps {
-                        bat "run-tests.bat"
+                        echo "test windows"
                     }
                     post {
                         always {
-                            junit "**/TEST-*.xml"
+                            echo "test windows result"
                         }
                     }
                 }
                 stage('Test On Linux') {
                    agent none
                     steps {
-                        bat "run-tests.bat"
+                          echo "test Linux"
                     }
                     post {
                         always {
-                            junit "**/TEST-*.xml"
+                           echo "test linux result"
                         }
                     }
                 }
