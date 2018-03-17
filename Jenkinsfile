@@ -71,6 +71,9 @@ pipeline {
                 }
             }
         }
+  stage('Deploy SIT approval'){
+    input "Deploy to SIT?"
+}
        stage('deploy to SIT') {
                    agent none
                     steps {
