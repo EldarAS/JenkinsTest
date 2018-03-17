@@ -75,7 +75,7 @@ pipeline {
                 }
             }
         }
- stage ('Verify deploy to SIT'){
+ stage ('Manual verfication deploy to SIT?'){
          agent none
                      steps {
                      input id: 'Deploy', message: 'Proceed with SIT deployment?', ok: 'Deploy!'
