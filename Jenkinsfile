@@ -71,9 +71,13 @@ pipeline {
                 }
             }
         }
-  stage('Deploy SIT approval'){
-    input "Deploy to SIT?"
-}
+ stage ('Verify deploy to SIT'){
+        try {
+            input id: 'Deploy', message: 'Is Blue node fine? Proceed with Green node deployment?', ok: 'Deploy!'
+        } catch (error) {
+           echo "full stop"
+        }
+
        stage('deploy to SIT') {
                    agent none
                     steps {
