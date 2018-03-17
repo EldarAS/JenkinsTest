@@ -15,7 +15,7 @@ node('node') {
 
  stage('Sonarqube Static Analysis') {
 print "Sonarqube running"
-        bat "./dir"
+        bat "dir"
 
  }
 
@@ -75,3 +75,4 @@ print "Sonarqube running"
 
         throw err
     }
+}
