@@ -1,6 +1,8 @@
 pipeline {
     agent none
     stages {
+         stage('Build and check code') {
+            parallel {
   stage('build') {
                    agent none
                     steps {
@@ -19,10 +21,12 @@ pipeline {
                     }
                     post {
                         always {
-                            echo "sonar qube result OK"
+                            echo "sonarqube result OK"
                         }
                     }
                 }
+            }
+         }
  stage('Add to nexus artifact repo') {
                    agent none
                     steps {
