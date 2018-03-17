@@ -74,7 +74,7 @@ pipeline {
  stage ('Verify deploy to SIT'){
          agent none
                      steps {
-                     input id: 'Deploy', message: 'Is Blue node fine? Proceed with Green node deployment?', ok: 'Deploy!'
+                     input id: 'Deploy', message: 'Proceed with SIT deployment?', ok: 'Deploy!'
                     }
                     post {
                         always {
@@ -95,6 +95,33 @@ pipeline {
                     }
                 }
 
+
+       stage('Run initial Tests SIT') {
+            parallel {
+                stage('deployment test') {
+                  agent none
+                    steps {
+                        echo "test deployment"
+                    }
+                    post {
+                        always {
+                            echo "test deployment result OK"
+                        }
+                    }
+                }
+                stage('endpoint test') {
+                   agent none
+                    steps {
+                          echo "test endpoint"
+                    }
+                    post {
+                        always {
+                           echo "test endpoint result OK"
+                        }
+                    }
+                }
+            }
+        }
                       stage('Run Tests SIT') {
             parallel {
                 stage('security test SIT ') {
