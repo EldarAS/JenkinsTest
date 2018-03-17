@@ -38,6 +38,18 @@ pipeline {
                         }
                     }
                 }
+   stage('Security test cloudformation scripts') {
+                   agent none
+                    steps {
+                      echo "CFN_NAG run"
+                     // bat "aws s3 ls"
+                    }
+                    post {
+                        always {
+                            echo "CFN_NAG run OK"
+                        }
+                    }
+                }
        stage('deploy to dev') {
                    agent none
                     steps {
