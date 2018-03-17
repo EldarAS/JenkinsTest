@@ -19,7 +19,7 @@ pipeline {
                     }
                     post {
                         always {
-                            echo "sonar qube result"
+                            echo "sonar qube result OK"
                         }
                     }
                 }
@@ -32,7 +32,7 @@ pipeline {
                     }
                     post {
                         always {
-                            echo "test security result"
+                            echo "test security result OK"
                         }
                     }
                 }
@@ -43,7 +43,7 @@ pipeline {
                     }
                     post {
                         always {
-                           echo "test performance result"
+                           echo "test performance result OK"
                         }
                     }
                 }
