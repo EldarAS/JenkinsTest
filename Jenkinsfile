@@ -68,7 +68,8 @@ pipeline {
        stage('deploy dev') {
                    agent any
                     steps {
-                      powershell 'aws s3 ls'
+                      enho "deploy"
+                     // powershell 'aws s3 ls'
                     }
                     post {
                         always {
