@@ -34,27 +34,27 @@ pipeline {
                         }
                     }
                 }
-        stage('Run Tests') {
+        stage('Run Tests dev') {
             parallel {
-                stage('security test') {
+                stage('deployment test') {
                   agent none
                     steps {
-                        echo "test security"
+                        echo "test deployment"
                     }
                     post {
                         always {
-                            echo "test security result OK"
+                            echo "test deployment result OK"
                         }
                     }
                 }
-                stage('performance test') {
+                stage('endpoint test') {
                    agent none
                     steps {
-                          echo "test performance"
+                          echo "test endpoint"
                     }
                     post {
                         always {
-                           echo "test performance result OK"
+                           echo "test endpoint result OK"
                         }
                     }
                 }
@@ -72,7 +72,7 @@ pipeline {
                     }
                 }
 
-                      stage('Run Tests') {
+                      stage('Run Tests SIT') {
             parallel {
                 stage('security test SIT ') {
                   agent none
