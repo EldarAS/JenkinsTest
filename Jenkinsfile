@@ -14,7 +14,7 @@ pipeline {
                         }
                     }
                 }
-                  stage('Unint test') {
+                  stage('Unit test') {
                    agent none
                     steps {
                         echo "Unit test"
