@@ -1,6 +1,21 @@
 pipeline {
-    agent none
-    stages {
+     agent {
+    docker {
+      image 'maven:3.5.0'
+    }
+  }
+      stage('Initialize') {
+                   agent none
+                    steps {
+                        echo "Init"
+                    }
+                    post {
+                        always {
+                            echo "Initialize result"
+                        }
+                    }
+                }
+
          stage('Build and check code') {
             parallel {
   stage('build') {
