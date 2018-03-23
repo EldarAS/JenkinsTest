@@ -173,7 +173,7 @@ pipeline {
     agent any
     steps {
      echo "test endpoint"
-     //bat "c://Dev//Postman//newman run test.postman_collection.json"
+     powershell "c://Dev//Postman//newman run test.postman_collection.json"
     }
     post {
      always {
