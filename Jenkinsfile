@@ -1,7 +1,7 @@
 pipeline {
  agent none
  stages {
-     
+
  stage('Initialize') {
   agent none
   steps {
@@ -19,7 +19,8 @@ pipeline {
    stage('build') {
     agent none
     steps {
-     echo "build"
+     //echo "build"
+     sh 'bat "mvn -version"'
     }
     post {
      always {
