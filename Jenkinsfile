@@ -1,5 +1,7 @@
 pipeline {
-stages{
+ agent none
+ stages {
+     
  stage('Initialize') {
   agent none
   steps {
