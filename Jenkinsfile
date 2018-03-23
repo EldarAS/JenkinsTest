@@ -89,7 +89,7 @@ pipeline {
     agent any
     steps {
      echo "deploy"
-       powershell "aws s3 ls"
+       //powershell "aws s3 ls"
     }
     post {
      always {
@@ -165,9 +165,10 @@ pipeline {
     }
    }
    stage('endpoint test') {
-    agent none
+    agent any
     steps {
      echo "test endpoint"
+     bat "c:\\Dev\\Postman\\newman run test.postman_collection.json"
     }
     post {
      always {
