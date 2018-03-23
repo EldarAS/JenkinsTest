@@ -3,7 +3,7 @@ pipeline {
  stages {
 
  stage('Initialize') {
-  agent none
+  agent any
   steps {
    echo "Init -clean"
     bat "mvn -version"
