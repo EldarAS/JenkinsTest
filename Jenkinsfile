@@ -20,7 +20,8 @@ pipeline {
  //agent { docker 'openjdk:8-jdk-alpine' }
  agent any
     steps {
-     //echo "build"
+  //echo "build"
+  //sh "mvn -version"   
     bat "mvn -version"
     }
     post {
