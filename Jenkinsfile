@@ -21,7 +21,7 @@ pipeline {
  agent any
     steps {
      //echo "build"
-     sh 'bat "mvn -version"'
+     sh '"mvn -version"'
     }
     post {
      always {
