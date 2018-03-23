@@ -173,11 +173,7 @@ pipeline {
     agent any
     steps {
      echo "test endpoint"
-     powershell(returnStdout: true, script: '''
-     cd \\Dev\\Postman\\
-     newman run test.postman_collection.json
-    ''')
-   
+     
     }
     post {
      always {
