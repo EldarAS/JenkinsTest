@@ -89,7 +89,7 @@ pipeline {
     agent any
     steps {
      echo "deploy"
-      // powershell 'aws s3 ls'
+       powershell "aws s3 ls"
     }
     post {
      always {
