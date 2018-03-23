@@ -5,7 +5,8 @@ pipeline {
  stage('Initialize') {
   agent none
   steps {
-   echo "Init"
+   echo "Init -clean"
+    bat "mvn -version"
   }
   post {
    always {
@@ -17,7 +18,7 @@ pipeline {
  stage('Build and check code') {
   parallel {
    stage('build') {
- //agent { docker 'openjdk:8-jdk-alpine' }
+ //agent { docker 'openjdk:8-jdk-alpine'}
  agent any
     steps {
   //echo "build"
