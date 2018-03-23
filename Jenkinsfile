@@ -17,7 +17,7 @@ pipeline {
  stage('Build and check code') {
   parallel {
    stage('build') {
-    agent none
+ agent { docker 'maven:3-alpine' }
     steps {
      //echo "build"
      sh 'bat "mvn -version"'
