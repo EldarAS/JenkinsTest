@@ -1,4 +1,5 @@
 pipeline {
+stages{
  stage('Initialize') {
   agent none
   steps {
@@ -77,7 +78,7 @@ pipeline {
      }
     }
    }
-   
+
    stage('deploy dev') {
     agent any
     steps {
@@ -196,5 +197,5 @@ pipeline {
    }
   }
  }
-
+}
 }
