@@ -17,7 +17,7 @@ pipeline {
 
  stage('Build and check code') {
   parallel {
-   stage('build') {
+   stage('Build') {
  //agent { docker 'openjdk:8-jdk-alpine'}
  agent any
     steps {
@@ -140,6 +140,11 @@ pipeline {
 
  stage('deploy to SIT') {
   agent none
+     when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' (1)
+              }
+            }
   steps {
    echo "deploy to SIT"
   }
@@ -168,7 +173,7 @@ pipeline {
     agent any
     steps {
      echo "test endpoint"
-     bat "c:\Dev\Postman\newman run test.postman_collection.json"
+     //bat "c://Dev//Postman//newman run test.postman_collection.json"
     }
     post {
      always {
