@@ -10,10 +10,11 @@ pipeline {
   }
   post {
    always {
-    echo "Initialize result"
+    echo "Initialize result OK"
    }
   }
  }
+
 
  stage('Build and check code') {
   parallel {
