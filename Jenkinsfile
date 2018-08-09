@@ -2,7 +2,7 @@ pipeline {
  agent none
  stages {
 
- stage('Initialize') {
+ stage('0. Initialize') {
   agent any
   steps {
    echo "Init -clean"
@@ -16,9 +16,9 @@ pipeline {
  }
 
 
- stage('Build and check code') {
+ stage('1. Build and check code') {
   parallel {
-   stage('Build') {
+   stage('1a. Build') {
  //agent { docker 'openjdk:8-jdk-alpine'}
  agent any
     steps {
@@ -33,7 +33,7 @@ pipeline {
     }
    }
 
-   stage('Unit test') {
+   stage('1b. Unit test') {
     agent none
     steps {
      echo "Unit test"
@@ -45,7 +45,7 @@ pipeline {
     }
    }
 
-   stage('sonarqube') {
+   stage('1c. sonarqube') {
     agent none
     steps {
      echo "sonarqube"
@@ -59,7 +59,7 @@ pipeline {
   }
  }
 
- stage('Add to nexus artifact repo') {
+ stage('2. Add to nexus artifact repo') {
   agent none
   steps {
    echo "Add to nexus artifact repo"
@@ -71,9 +71,9 @@ pipeline {
   }
  }
 
- stage('deploy to dev') {
+ stage('3. deploy to dev') {
   parallel {
-   stage('Security test cloudformation scripts') {
+   stage('3a. Security test cloudformation scripts') {
     agent none
     steps {
 
@@ -86,7 +86,7 @@ pipeline {
     }
    }
 
-   stage('deploy dev') {
+   stage('3b. deploy dev') {
     agent any
     steps {
      echo "deploy"
@@ -100,9 +100,9 @@ pipeline {
    }
   }
  }
- stage('Run Tests dev') {
+ stage('4. Run Tests dev') {
   parallel {
-   stage('deployment test') {
+   stage('4a. deployment test') {
     agent none
     steps {
      echo "test deployment"
@@ -113,7 +113,7 @@ pipeline {
      }
     }
    }
-   stage('endpoint test') {
+   stage('4b. endpoint test') {
     agent none
     steps {
      echo "test endpoint"
@@ -139,7 +139,7 @@ pipeline {
   }
  }
 
- stage('deploy to SIT') {
+ stage('5. deploy to SIT') {
   agent none
      when {
               expression {
@@ -157,9 +157,9 @@ pipeline {
  }
 
 
- stage('Run initial Tests SIT') {
+ stage('6. Run initial Tests SIT') {
   parallel {
-   stage('deployment test') {
+   stage('6a. deployment test') {
     agent none
     steps {
      echo "test deployment"
@@ -170,7 +170,7 @@ pipeline {
      }
     }
    }
-   stage('endpoint test') {
+   stage('6b endpoint test') {
     agent any
     steps {
      echo "test endpoint"
@@ -184,9 +184,9 @@ pipeline {
    }
   }
  }
- stage('Run Tests SIT') {
+ stage('7. Run Tests SIT') {
   parallel {
-   stage('security test SIT ') {
+   stage('7a. security test SIT ') {
     agent none
     steps {
      echo "test security"
@@ -197,7 +197,7 @@ pipeline {
      }
     }
    }
-   stage('performance test SIT') {
+   stage('7b performance test SIT') {
     agent none
     steps {
      echo "test performance"
