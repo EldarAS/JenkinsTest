@@ -127,17 +127,7 @@ pipeline {
   }
  }
 
- stage('Manual verfication deploy to SIT?') {
-  agent none
-  steps {
-   input id: 'Deploy', message: 'Proceed with SIT deployment?', ok: 'Deploy!'
-  }
-  post {
-   always {
-    echo "deploy to SIT result OK"
-   }
-  }
- }
+
 
  stage('5. deploy to SIT') {
   agent none
@@ -207,6 +197,17 @@ pipeline {
       echo "test performance result OK"
      }
     }
+   }
+  }
+ }
+  stage('Manual verfication deploy to UAT') {
+  agent none
+  steps {
+   input id: 'Deploy', message: 'Proceed with UAT deployment?', ok: 'Deploy!'
+  }
+  post {
+   always {
+    echo "deploy to SIT result OK"
    }
   }
  }
