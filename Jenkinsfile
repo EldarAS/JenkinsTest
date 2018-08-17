@@ -211,9 +211,36 @@ pipeline {
    }
   }
  }
+ stage('8. Run initial Tests SIT') {
+  parallel {
+   stage('8a. deployment test') {
+    agent none
+    steps {
+     echo "test deployment"
+    }
+    post {
+     always {
+      echo "test deployment result OK"
+     }
+    }
+   }
+   stage('8b endpoint test') {
+    agent any
+    steps {
+     echo "test endpoint"
+     
+    }
+    post {
+     always {
+      echo "test endpoint result OK"
+     }
+    }
+   }
+  }
+ }
  stage('8. Run Tests UAT') {
   parallel {
-   stage('8a. security test UAT ') {
+   stage('9a. security test UAT ') {
     agent none
     steps {
      echo "test security"
@@ -224,7 +251,7 @@ pipeline {
      }
     }
    }
-   stage('8b performance test UAT') {
+   stage('9b performance test UAT') {
     agent none
     steps {
      echo "test performance"
