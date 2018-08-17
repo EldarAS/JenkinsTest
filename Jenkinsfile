@@ -211,5 +211,33 @@ pipeline {
    }
   }
  }
+ stage('8. Run Tests UAT') {
+  parallel {
+   stage('8a. security test UAT ') {
+    agent none
+    steps {
+     echo "test security"
+    }
+    post {
+     always {
+      echo "test security result OK"
+     }
+    }
+   }
+   stage('8b performance test UAT') {
+    agent none
+    steps {
+     echo "test performance"
+    }
+    post {
+     always {
+      echo "test performance result OK"
+     }
+    }
+   }
+  }
+ }
+
+
 }
 }
