@@ -288,7 +288,7 @@ pipeline {
      }
     }
    }
-   stage('8b endpoint test') {
+   stage('12b endpoint test') {
     agent any
     steps {
      echo "test endpoint"
@@ -302,9 +302,9 @@ pipeline {
    }
   }
  }
- stage('8. Run Tests Prod') {
+ stage('12. Run Tests Prod') {
   parallel {
-   stage('9a. security test Prod ') {
+   stage('12a. security test Prod ') {
     agent none
     steps {
      echo "test security"
@@ -315,7 +315,7 @@ pipeline {
      }
     }
    }
-   stage('9b blue/green') {
+   stage('12b blue/green') {
     agent none
     steps {
      echo "test deploy"
