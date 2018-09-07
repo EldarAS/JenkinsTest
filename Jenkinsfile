@@ -207,11 +207,11 @@ pipeline {
   }
   post {
    always {
-    echo "deploy to SIT result OK"
+    echo "deploy to UAT result OK"
    }
   }
  }
- stage('8. Run initial Tests SIT') {
+ stage('8. Run initial Tests UAT') {
   parallel {
    stage('8a. deployment test') {
     agent none
@@ -238,9 +238,9 @@ pipeline {
    }
   }
  }
- stage('8. Run Tests UAT') {
+ stage('10. Run Tests UAT') {
   parallel {
-   stage('9a. security test UAT ') {
+   stage('10a. security test UAT ') {
     agent none
     steps {
      echo "test security"
@@ -251,7 +251,7 @@ pipeline {
      }
     }
    }
-   stage('9b performance test UAT') {
+   stage('10b performance test UAT') {
     agent none
     steps {
      echo "test performance"
@@ -264,7 +264,70 @@ pipeline {
    }
   }
  }
-
+  stage('Manual verfication deploy to Prod') {
+  agent none
+  steps {
+   input id: 'Deploy', message: 'Proceed with Prod deployment?', ok: 'Deploy!'
+  }
+  post {
+   always {
+    echo "deploy to Prod result OK"
+   }
+  }
+ }
+ stage('12. Run initial Tests Prod') {
+  parallel {
+   stage('11a. deployment test') {
+    agent none
+    steps {
+     echo "test deployment"
+    }
+    post {
+     always {
+      echo "test deployment result OK"
+     }
+    }
+   }
+   stage('8b endpoint test') {
+    agent any
+    steps {
+     echo "test endpoint"
+     
+    }
+    post {
+     always {
+      echo "test endpoint result OK"
+     }
+    }
+   }
+  }
+ }
+ stage('8. Run Tests Prod') {
+  parallel {
+   stage('9a. security test Prod ') {
+    agent none
+    steps {
+     echo "test security"
+    }
+    post {
+     always {
+      echo "test security result OK"
+     }
+    }
+   }
+   stage('9b blue/green') {
+    agent none
+    steps {
+     echo "test deploy"
+    }
+    post {
+     always {
+      echo "test deploy OK"
+     }
+    }
+   }
+  }
+ }
 
 }
 }
