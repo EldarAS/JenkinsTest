@@ -275,7 +275,7 @@ pipeline {
    }
   }
  }
- stage('12. Run initial Tests Prod') {
+ stage('11. Run initial Tests Prod') {
   parallel {
    stage('11a. deployment test') {
     agent none
@@ -288,7 +288,7 @@ pipeline {
      }
     }
    }
-   stage('12b endpoint test') {
+   stage('11b endpoint test') {
     agent any
     steps {
      echo "test endpoint"
