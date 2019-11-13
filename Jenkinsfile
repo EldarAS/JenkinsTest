@@ -20,7 +20,7 @@ pipeline {
   parallel {
    stage('1a. Build') {
  agent { docker 'mcr.microsoft.com/dotnet/core/sdk:2.2'}
- agent any
+ //agent any
     steps {
   //echo "build"
   //sh "mvn -version"   
