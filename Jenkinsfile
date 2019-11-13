@@ -19,12 +19,12 @@ pipeline {
  stage('1. Build and check code') {
   parallel {
    stage('1a. Build') {
- //agent { docker 'openjdk:8-jdk-alpine'}
+ agent { docker 'mcr.microsoft.com/dotnet/core/sdk:2.2'}
  agent any
     steps {
   //echo "build"
   //sh "mvn -version"   
-    bat "mvn -version"
+    bat "dotnet -version"
     }
     post {
      always {
