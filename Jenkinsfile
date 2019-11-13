@@ -24,7 +24,7 @@ pipeline {
     steps {
   //echo "build"
   //sh "mvn -version"   
-    bat "dotnet -version"
+    bat "dotnet --version"
     }
     post {
      always {
